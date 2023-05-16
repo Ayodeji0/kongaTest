@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 public class BaseClass {
     public static Properties prop;
@@ -27,13 +28,13 @@ public class BaseClass {
                     prop.load(ip);
             System.out.println("driver: " + driver);
 
-        }catch (FileNotFoundException e){
+        }catch (FileNotFoundException e) {
             e.printStackTrace();
-        }catch (IOException e){
+        }catch (IOException e) {
             e.printStackTrace();
         }
     }
-       public  static void launchApp(){
+       public  static void launchApp() {
         WebDriverManager.chromedriver().setup();
         String browserName = prop.getProperty("browser");
         if (browserName.contains("Chrome")){
@@ -44,11 +45,15 @@ public class BaseClass {
         } else if (browserName.contains("IE")) {
             driver = new InternetExplorerDriver();
         }
-//           Action.implicitWait(driver, 10);
+//           Action.implicitWait(driver, 20);
 //           Action.pageLoadTimeOut(driver, 30);
         driver.manage().window().maximize();
+//        Action.implicitWait(driver, 10);
+//        Action.pageLoadTimeout(driver,30);
         driver.manage().deleteAllCookies();
         driver.get(prop.getProperty("url"));
        }
 
+
+//        driver.manage().timeouts().implicitlyWait(20,TimeUnit.MILLISECONDS);
 }
