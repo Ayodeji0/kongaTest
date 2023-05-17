@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Each Browser Suite" parallel="tests" thread-count="3">
+    <test  name="ChromeTest">
+        <parameter name="browser" value="Chrome"></parameter>
+        <classes>
+            <class name="com.amazonstore.testcases.IndexPageTest">
+                <methods>
+                    <include name="validateLogo"/>
+                    <include name="validateTitle"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="IeTest">
+        <parameter name="browser" value="FireFox"></parameter>
+
+        <classes>
+            <class name="com.amazonstore.testcases.IndexPageTest">
+                <methods>
+                    <include name="validateLogo"/>
+                    <include name="validateTitle"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test  name="FireFoxTest">
+        <parameter name="browser" value="IE"></parameter>
+
+        <classes>
+            <class name="com.amazonstore.testcases.IndexPageTest">
+                <methods>
+                    <include name="validateLogo"/>
+                    <include name="validateTitle"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

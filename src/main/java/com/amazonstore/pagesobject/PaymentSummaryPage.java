@@ -7,18 +7,19 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class PaymentSummaryPage  extends BaseClass {
+    Action action = new Action();
 
     @FindBy (xpath = "//button[@class='button fuchsia-pink-outline getTransferStatus']")
-    WebElement transfermade;
+    private WebElement transfermade;
     @FindBy (xpath = "//span[@id='reselect-payment-method']")
-    WebElement reselectpayment;
+    private WebElement reselectpayment;
 
     public PaymentSummaryPage  () {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
     }
 
     public PaymentVerificationPage clickonpayment(){
-        Action.click(driver, transfermade);
+        action.click(getDriver(), transfermade);
         return new PaymentVerificationPage();
     }
 

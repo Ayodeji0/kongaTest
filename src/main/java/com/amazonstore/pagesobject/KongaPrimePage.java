@@ -7,15 +7,16 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class KongaPrimePage extends BaseClass {
+    Action action = new Action();
 
     @FindBy(xpath = "(//img[@alt='Lagos.'])[1]")
-    WebElement lagos;
+    private WebElement lagos;
 
     public  KongaPrimePage() {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
     }
     public PaymentMethodPage clickonprimebtn(){
-        Action.click(driver, lagos );
+        action.click(getDriver(), lagos );
         return new PaymentMethodPage();
     }
 }

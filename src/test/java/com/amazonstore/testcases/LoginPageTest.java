@@ -5,26 +5,24 @@ import com.amazonstore.pagesobject.HomePage;
 import com.amazonstore.pagesobject.IndexPage;
 import com.amazonstore.pagesobject.LoginPage;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class LoginPageTest extends BaseClass {
     IndexPage indexPage;
     LoginPage loginPage;
     HomePage homePage;
-    @BeforeMethod
-    public void setup()
+    @Parameters("browser")
+    @BeforeMethod(groups = {"Smoke","Sanity","Regression"})
+    public void setup(String browser)
     {
-        launchApp();
+        launchApp(browser);
 
     }
-    @AfterMethod
+    @AfterMethod(groups = {"Smoke","Sanity","Regression"})
     public void tearDown(){
-        driver.quit();
+        getDriver().quit();
     }
-    @Test
+    @Test(groups = {"Sanity", "Smoke"})
      public void loginTest(){
          indexPage = new IndexPage();
          loginPage = indexPage.ClickOnLoginBtn();

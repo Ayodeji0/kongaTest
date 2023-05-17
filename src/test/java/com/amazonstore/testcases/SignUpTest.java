@@ -7,6 +7,7 @@ import com.amazonstore.pagesobject.LoginPage;
 import com.amazonstore.pagesobject.SignUpPage;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class SignUpTest  extends BaseClass {
@@ -14,17 +15,18 @@ public class SignUpTest  extends BaseClass {
     LoginPage loginPage;
     HomePage homePage;
     SignUpPage signUpPage;
-    @BeforeMethod
-    public void setup()
+    @Parameters("browser")
+    @BeforeMethod(groups = {"Smoke","Sanity","Regression"})
+    public void setup(String browser)
     {
-        launchApp();
+        launchApp(browser);
 
     }
-    @AfterMethod
+    @AfterMethod(groups = {"Smoke","Sanity","Regression"})
     public void tearDown(){
-        driver.quit();
+        getDriver().quit();
     }
-    @Test
+    @Test(groups = "Regression")
     public void accountcreation(){
         indexPage = new IndexPage();
         loginPage=indexPage.ClickOnLoginBtn();

@@ -7,18 +7,19 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AccountVerificationPage extends BaseClass {
+    Action action= new Action();
     @FindBy(id = "pin")
-    WebElement pinCode;
+     private WebElement pinCode;
     @FindBy(xpath = "//button[normalize-space()='Submit Code']")
-    WebElement codeBtn;
+    private WebElement codeBtn;
 
     public AccountVerificationPage(){
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
     }
 
     public IndexPage enterdigit(String num){
-        Action.type(pinCode, num);
-        Action.click(driver, codeBtn);
+        action.type(pinCode, num);
+        action.click(getDriver(), codeBtn);
         return new IndexPage();
 
     }

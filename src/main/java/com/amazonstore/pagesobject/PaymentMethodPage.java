@@ -7,17 +7,18 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class PaymentMethodPage extends BaseClass {
+    Action action = new Action();
 
     @FindBy(xpath = "//body")
-    WebElement banktransfer;
+    private WebElement banktransfer;
 
     @FindBy(xpath = "//button[@class='dashboard-card__button Card']")
-    WebElement cardoption;
+    private WebElement cardoption;
     public PaymentMethodPage() {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
     }
     public TransferPage clickonoptions(){
-        Action.click(driver, banktransfer);
+        action.click(getDriver(), banktransfer);
         return new TransferPage();
     }
 

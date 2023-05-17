@@ -7,37 +7,38 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AddToCartPage extends BaseClass {
+    Action action = new Action();
     @FindBy(xpath = "(//div[normalize-space()='XXL']")
-    WebElement size;
+    private WebElement size;
     @FindBy(xpath = "(//button[@name='increment'][normalize-space()='+'])[2]")
-    WebElement quantity;
+     private WebElement quantity;
 
     @FindBy(xpath = "(//button[contains(@type,'submit')][normalize-space()='Buy Now'])[2]")
-    WebElement buybtn;
+    private WebElement buybtn;
 
-    @FindBy(xpath = "//h1[@class='_26fa9_oe_eV']") WebElement shopping;
+    @FindBy(xpath = "//h1[@class='_26fa9_oe_eV']") private WebElement shopping;
 
-    @FindBy(css = "div[class='e97e8_3Yoxb'] a:nth-child(1)") WebElement checkout;
+    @FindBy(css = "div[class='e97e8_3Yoxb'] a:nth-child(1)") private WebElement checkout;
 
     public AddToCartPage(){
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
     }
 
     public void clickOnSize(String l) {
-        Action.click(driver, size);
+        action.click(getDriver(), size);
     }
 
     public void clickQuantity(String number) {
-        Action.click(driver, quantity);
+        action.click(getDriver(), quantity);
     }
     public void clickOnBtn() {
-        Action.click(driver, buybtn);
+        action.click(getDriver(), buybtn);
     }
     public boolean validate() {
-       return Action.isDisplayed(driver, shopping);
+       return action.isDisplayed(getDriver(), shopping);
     }
     public OrderPage clickOnCheckout(){
-        Action.JSClick(driver, checkout);
+        action.JSClick(getDriver(), checkout);
         return new OrderPage();
     }
 }

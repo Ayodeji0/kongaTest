@@ -7,32 +7,33 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class IndexPage extends BaseClass {
+    Action action = new Action();
     @FindBy(xpath = "//a[normalize-space()='Login / Signup']")
-    WebElement loginBtn;
+   private WebElement loginBtn;
     @FindBy(xpath = "//a[@class='_6a647_2Et0-']")
-    WebElement kongaLogo;
+    private WebElement kongaLogo;
     @FindBy (xpath = "//form[@class='f6ed2_25oVd']//input[@id='jsSearchInput']")
-    WebElement searchProductBox;
+    private WebElement searchProductBox;
     @FindBy (xpath = "(//*[name()='svg'][@name='search'])[4]")
-    WebElement searchBtn;
+    private WebElement searchBtn;
 
     public IndexPage(){
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
     }
     public LoginPage ClickOnLoginBtn() {
-        Action.click(driver, loginBtn);
+        action.click(getDriver(), loginBtn);
         return new LoginPage();
     }
     public boolean validateLogo() {
-       return Action.isDisplayed(driver,kongaLogo);
+       return action.isDisplayed(getDriver(),kongaLogo);
     }
     public String getTitle() {
-        String konga_Store = driver.getTitle();
+        String konga_Store = getDriver().getTitle();
         return konga_Store;
     }
     public SearchResultPage searchProduct(String productName){
-        Action.type(searchProductBox, productName);
-        Action.click(driver,searchBtn);
+        action.type(searchProductBox, productName);
+        action.click(getDriver(),searchBtn);
         return new SearchResultPage();
     }
 }

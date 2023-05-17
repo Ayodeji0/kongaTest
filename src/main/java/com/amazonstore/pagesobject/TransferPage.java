@@ -8,21 +8,21 @@ import org.openqa.selenium.support.PageFactory;
 
 public class TransferPage  extends BaseClass {
 
-
+    Action action = new Action();
 
     public TransferPage () {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
     }
     @FindBy(xpath = "//input[@id='first-name']")
-    WebElement firstname;
+    private WebElement firstname;
     @FindBy(xpath = "//input[@id='last-name']")
-    WebElement lastname;
-    @FindBy(xpath = "//button[@id='validateTransferForm']") WebElement paynowbtn;
+    private WebElement lastname;
+    @FindBy(xpath = "//button[@id='validateTransferForm']") private WebElement paynowbtn;
 
     public PaymentSummaryPage paynow(String fname, String Lname){
-        Action.type(firstname, fname);
-        Action.type(lastname, Lname);
-        Action.click(driver, paynowbtn);
+        action.type(firstname, fname);
+        action.type(lastname, Lname);
+        action.click(getDriver(), paynowbtn);
         return new PaymentSummaryPage();
     }
 }

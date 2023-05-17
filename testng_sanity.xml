@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="Sanity">
+        <parameter name="browser" value="Chrome"></parameter>
+        <groups>
+            <run>
+                <include name="Sanity"></include>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.amazonstore.testcases.AddToCartPageTest">
+                <methods><include name="addToCartTest"/>
+                </methods>
+            </class>
+            <class name="com.amazonstore.testcases.HomePageTest">
+                <methods>
+                    <include name="wishListTest"/>
+                </methods>
+            </class>
+            <class name="com.amazonstore.testcases.IndexPageTest">
+                <methods>
+                    <include name="validateLogo"/>
+                    <include name="validateTitle"/>
+                </methods>
+            </class>
+            <class name="com.amazonstore.testcases.LoginPageTest">
+            <methods>
+                <include name="loginTest"/>
+            </methods>
+        </class>
+            <class name="com.amazonstore.testcases.OrderPageTest">
+                <methods>
+                <include name="orderPageTest"/>
+            </methods>
+            </class>
+            <class name="com.amazonstore.testcases.SearchResultPageTest">
+                <methods>
+                    <include name="clickOnProduct"/>
+                </methods>
+            </class>
+            <class name="com.amazonstore.testcases.SignUpTest">
+                <methods>
+                    <include name="accountcreation"/>
+                </methods>
+            </class>
+            <class name="com.amazonstore.testcases.end2endTest">
+                <methods>
+                    <include name="endToendTest"/>
+                </methods>
+        </class>
+        </classes>
+    </test>
+</suite>

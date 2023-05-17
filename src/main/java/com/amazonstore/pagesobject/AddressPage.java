@@ -7,15 +7,17 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AddressPage extends BaseClass {
+    Action action= new Action();
     @FindBy(xpath = "//button[@class='_0a08a_3czMG _8e9fa_19oZn']")
-    WebElement signupbtn;
+     private WebElement signupbtn;
 
     public AddressPage () {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
     }
 
     public ShippingPage clicksignup(){
-        Action.click(driver, signupbtn);
+        action.click(getDriver(), signupbtn);
+
         return new  ShippingPage();
     }
 }

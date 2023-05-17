@@ -7,16 +7,17 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class OrderPage  extends BaseClass {
+    Action action = new Action();
     @FindBy(xpath = "//div[contains(@class,'_18e21_1ZDIc')])[3]")
-    WebElement subtotal;
-    @FindBy(xpath = "//div[contains(@class,'_18e21_1ZDIc')])[4]") WebElement totalPrice;
+    private WebElement subtotal;
+    @FindBy(xpath = "//div[contains(@class,'_18e21_1ZDIc')])[4]") private WebElement totalPrice;
 
     @FindBy(xpath = "//div[contains(@class,'f082d_safAL')]//a[contains(@class,'_0a08a_3czMG')][normalize-space()='Continue to Checkout'")
-    WebElement continutocheckout;
+    private WebElement continutocheckout;
 
 
     public OrderPage () {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
     }
 
 //     This method is used for getting the unit price of goods while testing e-comerce
@@ -38,7 +39,7 @@ public class OrderPage  extends BaseClass {
 
     }
     public LoginPage continueToCheckout(){
-        Action.click(driver,continutocheckout);
+        action.click(getDriver(),continutocheckout);
         return new LoginPage();
     }
 

@@ -7,18 +7,19 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class SearchResultPage extends BaseClass {
+    Action action = new Action();
     public SearchResultPage(){
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
     }
 
     @FindBy(xpath = "//img[@class='f5e10_VzEXF _72d4f_1Tx1j lazyloaded']")
-    WebElement ProductResult;
+    private WebElement ProductResult;
 
     public boolean isProductAvailable(){
-        return Action.isDisplayed(driver, ProductResult);
+        return action.isDisplayed(getDriver(), ProductResult);
     }
     public AddToCartPage clickOnProduct(){
-        Action.click(driver,ProductResult);
+        action.click(getDriver(),ProductResult);
         return new AddToCartPage();
     }
 }
